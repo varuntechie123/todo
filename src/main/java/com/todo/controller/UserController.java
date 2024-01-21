@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/api")
+@RequestMapping("/v1/api/users")
 public class UserController {
 
     private UserService userService;
@@ -25,13 +25,13 @@ public class UserController {
         return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
     }
 
-    @GetMapping("/users")
+    @GetMapping
     ResponseEntity<List<UserDto>> getUsers() {
         List<UserDto> userDtoList = userService.getAllUsers();
         return new ResponseEntity<>(userDtoList, HttpStatus.OK);
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<UserDto> getUser(@PathVariable long id) {
         UserDto userDto = userService.getUser(id);
         return new ResponseEntity<>(userDto, HttpStatus.OK);
@@ -43,13 +43,13 @@ public class UserController {
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }*/
 
-    @PutMapping("/users/{id}")
+    @PutMapping("/{id}")
     ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto, @PathVariable long id) {
         UserDto updatedUser = userService.updateUser(userDto, id);
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("/{id}")
     ResponseEntity<String> deleteUser(@PathVariable long id) {
         userService.deleteUser(id);
         return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
