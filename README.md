@@ -1,3 +1,5 @@
+Application needs MySQL Server. See database configuration in application.properties.
+
 Start the application by running:
 mvn spring-boot:run
 
