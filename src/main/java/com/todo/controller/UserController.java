@@ -1,7 +1,6 @@
 package com.todo.controller;
 
 import com.todo.dto.UserDto;
-import com.todo.entity.User;
 import com.todo.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +18,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/users")
+    @PostMapping
     ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
         UserDto createdUserDto = userService.createUser(userDto);
         return new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);

@@ -1,12 +1,8 @@
 package com.todo.service.impl;
 
-import com.todo.dto.CategoryDto;
 import com.todo.dto.UserDto;
-import com.todo.entity.Category;
 import com.todo.entity.User;
 import com.todo.exception.ResourceNotFoundException;
-import com.todo.mapper.CategoryMapper;
-import com.todo.mapper.TaskMapper;
 import com.todo.mapper.UserMapper;
 import com.todo.repository.UserRepository;
 import com.todo.service.UserService;
@@ -20,24 +16,18 @@ public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
 
-    private CategoryMapper categoryMapper;
-    private TaskMapper taskMapper;
     private UserMapper userMapper;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, CategoryMapper categoryMapper, TaskMapper taskMapper, UserMapper userMapper) {
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
-        this.categoryMapper = categoryMapper;
-        this.taskMapper = taskMapper;
         this.userMapper = userMapper;
     }
 
     @Override
     public UserDto createUser(UserDto userDto) {
-        System.out.println("UserDto " + userDto);
         User user = userMapper.mapToUser(userDto);
-        System.out.println(user);
-        User createdUser = userRepository.save(userMapper.mapToUser(userDto));
+        User createdUser = userRepository.save(user);
         return userMapper.mapToUserDto(createdUser);
     }
 
@@ -52,7 +42,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUser(long id) {
-
         User user = userRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("User", "id", String.valueOf(id)));
 
@@ -79,8 +68,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(long id) {
-
         userRepository.deleteById(id);
-
     }
 }

@@ -1,15 +1,12 @@
 package com.todo.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 //@Setter
 //@Getter
 @Entity(name = "users")
-public class User  {
+public class User {
 
     public User() {
     }
@@ -85,5 +82,17 @@ public class User  {
 
     public void setCategories(List<Category> categories) {
         this.categories = categories;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", categories=" + categories +
+                '}';
     }
 }

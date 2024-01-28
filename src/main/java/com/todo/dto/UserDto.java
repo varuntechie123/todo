@@ -1,10 +1,6 @@
 package com.todo.dto;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,5 +81,17 @@ public class UserDto {
 
     public void setCategories(List<CategoryDto> categories) {
         this.categories = categories;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", categories=" + categories +
+                '}';
     }
 }

@@ -19,7 +19,7 @@ public class TaskMapper {
         return taskDto;
     }
 
-    public Task mapToTaskDto(TaskDto taskDto) {
+    public Task mapToTask(TaskDto taskDto) {
         Task task = mapper.map(taskDto, Task.class);
         return task;
     }

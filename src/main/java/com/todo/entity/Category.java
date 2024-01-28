@@ -2,9 +2,6 @@ package com.todo.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -48,11 +45,20 @@ public class Category {
         this.name = name;
     }
 
-    public List<Task> getTasks() {
+    public List<Task> getTask() {
         return tasks;
     }
 
-    public void setTasks(List<Task> tasks) {
+    public void setTask(List<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", tasks=" + tasks +
+                '}';
     }
 }

@@ -4,12 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 //@Setter
 //@Getter
@@ -77,5 +73,16 @@ public class Task {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", dueDate=" + dueDate +
+                ", status=" + status +
+                '}';
     }
 }

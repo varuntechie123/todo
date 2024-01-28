@@ -2,9 +2,6 @@ package com.todo.dto;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -52,5 +49,14 @@ public class CategoryDto {
 
     public void setTasks(List<TaskDto> tasks) {
         this.tasks = tasks;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoryDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", tasks=" + tasks +
+                '}';
     }
 }
